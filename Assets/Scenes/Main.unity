@@ -1787,7 +1787,6 @@ RectTransform:
   m_Children:
   - {fileID: 1262083728}
   - {fileID: 801053391}
-  - {fileID: 1099313138}
   - {fileID: 665818818}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -2649,7 +2648,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 451315351}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5041,85 +5040,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6823542044353653471, guid: 8066fe31586d46d4c8ae93ac145639de, type: 3}
   m_PrefabInstance: {fileID: 279402296}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1099313137
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1099313138}
-  - component: {fileID: 1099313140}
-  - component: {fileID: 1099313139}
-  m_Layer: 5
-  m_Name: HP_Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1099313138
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099313137}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 451315351}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 215, y: 244}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1099313139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099313137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'HP:'
---- !u!222 &1099313140
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099313137}
-  m_CullTransparentMesh: 1
 --- !u!4 &1104085260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6823542044353653471, guid: 8066fe31586d46d4c8ae93ac145639de, type: 3}
@@ -9512,7 +9432,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 801053392}
   TimeText: {fileID: 665818820}
-  HPText: {fileID: 1099313139}
 --- !u!4 &1964628193
 Transform:
   m_ObjectHideFlags: 0
@@ -10001,6 +9920,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &2045967248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7917186773591614549, guid: 6dae7238f5220b549a37a71acb2b4539, type: 3}
+  m_PrefabInstance: {fileID: 7917186771845047929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2072292573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6823542044353653471, guid: 8066fe31586d46d4c8ae93ac145639de, type: 3}
@@ -10275,9 +10199,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8018355303260506818, guid: 2021fd6c021f4b04ba862402e5e3ebd4, type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 2045967248}
+    - target: {fileID: 8018355303260506818, guid: 2021fd6c021f4b04ba862402e5e3ebd4, type: 3}
       propertyPath: HPText
       value: 
-      objectReference: {fileID: 1099313139}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018355303260506818, guid: 2021fd6c021f4b04ba862402e5e3ebd4, type: 3}
+      propertyPath: PenaTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8018355303260506818, guid: 2021fd6c021f4b04ba862402e5e3ebd4, type: 3}
       propertyPath: ScoreText
       value: 
