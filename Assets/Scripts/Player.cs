@@ -64,16 +64,17 @@ public class Player : MonoBehaviour
             {
                 MoveDown();
 
-        }
+            }
             if (Input.GetKeyDown("right"))
             {
                 MoveRight();
-        }
+            }
             if (Input.GetKeyDown("left"))
             {
                 MoveLeft();
 
-        }
+            }
+
         
 
        
