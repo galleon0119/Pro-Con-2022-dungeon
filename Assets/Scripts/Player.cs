@@ -112,19 +112,27 @@ public class Player : MonoBehaviour
     }
     public void MoveUp()
     {
-        movePosition = moveY;   
+        movePosition = moveY;
+
+        Uptag();
     }
     public void MoveDown()
     {
         movePosition = -moveY;
+
+        Uptag();
     }
     public void MoveRight()
     {
         movePosition = moveX;
+
+        Uptag();
     }
     public void MoveLeft()
     { 
         movePosition = -moveX;
+
+        Uptag();
     }
     //ì_ñ≈Ç≥ÇπÇÈèàóù
     IEnumerator _hit()
@@ -146,6 +154,21 @@ public class Player : MonoBehaviour
 
         //ÉãÅ[ÉvÇ™î≤ÇØÇΩÇÁstateÇNOMALÇ…Ç∑ÇÈ
         state = STATE.NOMAL;
+       
+    }
+    void Uptag()
+    {
+        Collider2D hitCollider;
+        hitCollider =Physics2D.OverlapPoint(this.transform.position + new Vector3 (0,1));
+        if(hitCollider == null)
+        {
+            return;
+        }
+     
+        Debug.Log(hitCollider.gameObject.GetComponent<Collider2D>());
+        Debug.Log(hitCollider.gameObject.transform.position);
+
+        //hitCollider = new Collider2D();
        
     }
 
