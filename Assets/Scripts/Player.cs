@@ -24,9 +24,9 @@ public class Player : MonoBehaviour
     Rigidbody2D rb2D;
     public GameObject UIManager;
     [System.NonSerialized]
-    public Vector2 moveY = new Vector2(0, 0.5f); //(1マス毎の)Y軸の移動距離
+    public Vector2 moveY = new Vector2(0, 1f); //(1マス毎の)Y軸の移動距離
     [System.NonSerialized]
-    public Vector2 moveX = new Vector2(0.5f, 0); //(1マス毎の)X軸の移動距離
+    public Vector2 moveX = new Vector2(1f, 0); //(1マス毎の)X軸の移動距離
 
     //点滅させるときのループカウント
     [SerializeField] int loopCount;
@@ -59,6 +59,8 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown("up"))
             {
                 MoveUp();
+                
+
             }
             if (Input.GetKeyDown("down"))
             {
@@ -96,7 +98,17 @@ public class Player : MonoBehaviour
             Score += 100;
             Destroy(collision.gameObject);
         }
-        if(collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.tag == "Item1")
+        {
+            collision.GetComponent<SpriteRenderer>().enabled = false;//画像非表示
+            collision.enabled = false;                               //あたり判定off　
+
+            StartCoroutine(item1());//コルーチン利用
+
+            Destroy(collision.gameObject);
+
+        }
+        else if(collision.gameObject.tag == "Enemy")
         {
             Time_Text.GetComponent<TimeUI>().time -= PenaTime;
             if (state != STATE.NOMAL)
@@ -115,6 +127,7 @@ public class Player : MonoBehaviour
         movePosition = moveY;
 
         Uptag();
+
     }
     public void MoveDown()
     {
@@ -129,7 +142,7 @@ public class Player : MonoBehaviour
         Uptag();
     }
     public void MoveLeft()
-    { 
+    {
         movePosition = -moveX;
 
         Uptag();
@@ -156,20 +169,70 @@ public class Player : MonoBehaviour
         state = STATE.NOMAL;
        
     }
-    void Uptag()
+    public string  Uptag()
     {
         Collider2D hitCollider;
         hitCollider =Physics2D.OverlapPoint(this.transform.position + new Vector3 (0,1));
         if(hitCollider == null)
         {
-            return;
+            return "error";
         }
-     
-        Debug.Log(hitCollider.gameObject.GetComponent<Collider2D>());
-        Debug.Log(hitCollider.gameObject.transform.position);
 
-        //hitCollider = new Collider2D();
+        /*Debug.Log(hitCollider.gameObject.GetComponent<Collider2D>());
+        Debug.Log(hitCollider.gameObject.transform.position);*/
+
+        return (hitCollider.gameObject.tag);
        
     }
+    public string Downtag()
+    {
+        Collider2D hitCollider;
+        hitCollider = Physics2D.OverlapPoint(this.transform.position + new Vector3(0, -1));
+        if (hitCollider == null)
+        {
+            return "error";
+        }
 
+        /*Debug.Log(hitCollider.gameObject.GetComponent<Collider2D>());
+        Debug.Log(hitCollider.gameObject.transform.position);*/
+
+        return (hitCollider.gameObject.tag);
+
+    }
+    public string Righttag()
+    {
+        Collider2D hitCollider;
+        hitCollider = Physics2D.OverlapPoint(this.transform.position + new Vector3(1, 0));
+        if (hitCollider == null)
+        {
+            return "error";
+        }
+
+        /*Debug.Log(hitCollider.gameObject.GetComponent<Collider2D>());
+        Debug.Log(hitCollider.gameObject.transform.position);*/
+
+        return (hitCollider.gameObject.tag);
+
+    }
+    public string Lefttag()
+    {
+        Collider2D hitCollider;
+        hitCollider = Physics2D.OverlapPoint(this.transform.position + new Vector3(-1, 0));
+        if (hitCollider == null)
+        {
+            return "error";
+        }
+
+        /*Debug.Log(hitCollider.gameObject.GetComponent<Collider2D>());
+        Debug.Log(hitCollider.gameObject.transform.position);*/
+
+        return (hitCollider.gameObject.tag);
+
+    }
+    IEnumerator item1()
+    {
+        Time.timeScale = 2;
+        yield return new WaitForSeconds(3);
+        Time.timeScale = 1;
+    }
 }
