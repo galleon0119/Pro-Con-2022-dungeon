@@ -18,7 +18,9 @@ public class Player : MonoBehaviour
     [System.NonSerialized]
     public int HP;
     [System.NonSerialized]
-    public int Score;
+    static public int Score;
+    [System.NonSerialized]
+    static public float time;
     [SerializeField]
     private float PenaTime ;
     Rigidbody2D rb2D;
@@ -84,10 +86,16 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
      
-         rb2D.MovePosition(rb2D.position +( movePosition));
+        rb2D.MovePosition(rb2D.position +( movePosition));
            
-         movePosition = new Vector3(0, 0, 0);
+        movePosition = new Vector3(0, 0, 0);
+
+        Uptag();
+        Downtag();
+        Lefttag();
+        Righttag();
         
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -96,6 +104,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Gem")
         {
             Score += 100;
+            Debug.Log(Score);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.tag == "Item1")
@@ -111,6 +120,7 @@ public class Player : MonoBehaviour
         else if(collision.gameObject.tag == "Enemy")
         {
             Time_Text.GetComponent<TimeUI>().time -= PenaTime;
+            time = Time_Text.GetComponent<TimeUI>().time;
             if (state != STATE.NOMAL)
             {
                 return;
@@ -126,26 +136,23 @@ public class Player : MonoBehaviour
     {
         movePosition = moveY;
 
-        Uptag();
-
+       
     }
     public void MoveDown()
     {
         movePosition = -moveY;
 
-        Uptag();
     }
     public void MoveRight()
     {
         movePosition = moveX;
 
-        Uptag();
+       
     }
     public void MoveLeft()
     {
         movePosition = -moveX;
 
-        Uptag();
     }
     //ì_ñ≈Ç≥ÇπÇÈèàóù
     IEnumerator _hit()

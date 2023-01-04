@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Function : MonoBehaviour
+public class Function
 {
     public static Function instance;
 
@@ -13,10 +13,11 @@ public class Function : MonoBehaviour
             instance = this;
         }
     }
-
-    void Start()
-    {gameObject.SetActive(true);
+    public void Tryori()
+    {
+        Debug.Log("AA");
     }
+  
 
     public void Move_UP()
     {

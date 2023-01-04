@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using System.Linq;                 // ☆　<=　追加します
+using UnityEngine.Events;
 
 
 
@@ -32,9 +35,12 @@ public class GameManager : MonoBehaviour
         public int initTime = 30;
         int time;
 
+    [SerializeField]
+    private ResultPopUp resultPopUp;
 
-        //キーを押す行為を関数としてしまう
-        private WaitUntil WaitAnyKey => new WaitUntil(() => Input.anyKeyDown);
+
+    //キーを押す行為を関数としてしまう
+    private WaitUntil WaitAnyKey => new WaitUntil(() => Input.anyKeyDown);
         private WaitForSeconds WaitNext => new WaitForSeconds(5.0f);
 
 
@@ -75,15 +81,18 @@ public class GameManager : MonoBehaviour
                         stateText.text = "GAME OVER";
                         //timescareはdeltatimeをストップする0,1で切替え、オブジェクトをストップする
                         Time.timeScale = 0;
+                        Debug.Log("リザルト内容を表示します");
+                        
                         yield return WaitAnyKey;
-                        //画面をリセットするusingでscenemamagmentが必要
                         SceneManager.LoadScene(0);
+                        
                         Time.timeScale = 1;
                         break;
                 }
                 yield return null;
             }
         }
-    }
+   
+}
 
 

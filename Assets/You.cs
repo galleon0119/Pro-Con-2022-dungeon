@@ -14,6 +14,7 @@ public class You : MonoBehaviour
     private Collider2D col;
     Rigidbody2D rb2D;
     string uptag, downtag, lefttag, righttag;
+    Function func = new Function();
 
 
 
@@ -31,8 +32,9 @@ public class You : MonoBehaviour
     private IEnumerator Set()
     {
         yield return new WaitUntil(() => Input.anyKeyDown);//必須。これがないとスタート画面の時点で関数が呼び出される
-        
+
         ///////////////////////////////////この下にスクリプト書いてください
+        /*func.Tryori();
         for(int i = 0;i<100;i++ )
         {
             if(righttag == "Gem"|| righttag == "Item1")
@@ -51,7 +53,7 @@ public class You : MonoBehaviour
                 player.MoveUp();
                 yield return new WaitForFixedUpdate();
             }
-        }
+        }*/
 
 
     }
